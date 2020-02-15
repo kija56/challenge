@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -12,8 +13,10 @@ class CompanyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('companies.index');
+    {   
+        
+        $companies = Company::orderBy('created_at', 'desc')->get();
+        return view('companies.index')->with('companies', $companies);
     }
 
     /**
