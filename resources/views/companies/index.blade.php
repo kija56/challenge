@@ -35,7 +35,7 @@
                             </tr>
                         @endforeach
                     </table>
-                   
+                    {!! $companies->links() !!}
                     @else
                     <p>No any company added yet</p>
                     @endif
