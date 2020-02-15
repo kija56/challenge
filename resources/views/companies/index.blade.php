@@ -18,17 +18,19 @@
                     @if(count($companies)>0)
                     <table class="table table-striped">
                         <tr>
-                            <th>Company</th>
-                            <th></th>
+                            <th>Company Name</th>
+                            <th>Email</th>
+                            <th>Website</th>
                             <th>Actions</th>
-                            <th></th>
                         </tr>
                         @foreach($companies as $company)
                             <tr>
                                 <td>{{$company->name}}</td>
-                                <td><a class="btn btn-primary btn-sm float-right" href="/companies/{{$company->id}}/edit">Edit</a></td>
+                                <td>{{$company->email}}</td>
+                                <td>{{$company->website}}</td>
                                 <td>
-                                    
+                                    <a class="btn btn-primary btn-sm " href="/companies/{{$company->id}}/edit">Edit</a>
+                                    <a class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                             </tr>
                         @endforeach
