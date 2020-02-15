@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\CompanyRequest;
 class CompanyController extends Controller
 {
     /**
@@ -35,9 +35,35 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompanyRequest $request)
     {
-        //
+        
+        //Get file name with extension
+        $fileWithExt = $request->file('logo')->getClientOriginalName();
+
+        //Get file name
+        $filename = pathinfo($fileWithExt, PATHINFO_FILENAME);
+
+        //Get file extension
+        $extension = $request->file('logo')->getClientOriginalExtension();
+
+        //Create new file name
+        $filenameToStore = $filename.'_'.time().'.'.$extension;
+
+        //Upload file
+        $path = $request->file('logo')
+        ->storeAs('public', $filenameToStore);
+
+        //Create Company
+        $company = new Company();
+        $company->name =$request->input('name');
+        $company->email =$request->input('email');
+        $company->website = $request->input('website');
+        $company->logo = $filenameToStore;
+        $company->save();
+
+        return redirect('/companies')->with('success','A Company has been succesifully');
+
     }
 
     /**
