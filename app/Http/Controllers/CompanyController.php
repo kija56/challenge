@@ -92,7 +92,8 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $company = Company::findOrfail($id);
+        return view('companies.edit')->with('company',$company);
     }
 
     /**
