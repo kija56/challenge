@@ -67,8 +67,8 @@ class CompanyController extends Controller
         $company->logo = $filenameToStore;
         $company->save();
 
-        return redirect('/companies')->with('success','A Company has been succesifully');
-
+        return redirect('/companies')->with('success','A Company has been craeted succesfully');
+        
     }
 
     /**
@@ -79,7 +79,9 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        $company = Company::findOrfail($id);
+      
+        return view('companies.show')->with('company',$company);
     }
 
     /**
