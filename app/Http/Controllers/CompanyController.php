@@ -103,9 +103,26 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CompanyRequest $request, $id)
     {
-        //
+        $company = Company::findOrfail($id);
+        
+        $company->name = $request->input('name');
+        $company->email = $request->input('email');
+        $company->website = $request->input('website');  
+        if ($request->hasFile('logo'))
+        {  
+        $fileWithExt = $request->file('logo')->getClientOriginalName();
+        $filename = pathinfo($fileWithExt, PATHINFO_FILENAME);
+        $extension = $request->file('logo')->getClientOriginalExtension();
+        $filenameToStore = $filename.'_'.time().'.'.$extension;
+        $path = $request->file('logo')
+        ->storeAs('public', $filenameToStore);  
+        $company->logo = $filenameToStore; 
+        }
+        $company->update();
+
+        return redirect('/companies')->with('success', 'Company Updated');
     }
 
     /**

@@ -9,10 +9,10 @@
         <div class="col-md-9 pt-3">
             <div class="d-flex justify-content-between align-items-baseline">
                 <div class="d-flex align-items-center pb-3">
-                    <div class="h4">{{$company->name}}</div>
+                    <div class="h4 pr-2">{{$company->name}}</div>
 
                 </div>
-                <div class="pt-4 font-weight-bold">Email: {{$company->email}}</div>
+                <div class="pt-4  pr-4">Email: {{$company->email}}</div>
                 <div class=""><b>Website:</b> {{$company->website}}</div>
             </div>
             <div class="d-flex">

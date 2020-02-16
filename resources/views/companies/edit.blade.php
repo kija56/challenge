@@ -7,8 +7,9 @@
                      <a class="float-right btn btn-primary btn-sm" href="/companies">Go Back</a>
                 </div>
                 <div class="card-body">
-                <form action="/companies" enctype="multipart/form-data" method="post">
+                <form action="/companies/{{$company->id}}" enctype="multipart/form-data" method="post">
                 @csrf
+                @method('PATCH')
                     <div class="form-group row">
                         <label for="name" class="col-md-4 col-form-label">{{ __('Company Name') }}</label>
                         <input id="name" type="text" 
