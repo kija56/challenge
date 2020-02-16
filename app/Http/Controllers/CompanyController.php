@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CompanyRequest;
 class CompanyController extends Controller
 {
@@ -133,6 +134,11 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $company = Company::findOrfail($id);
+        
+        if(Storage::delete('public/'.$company->logo)){
+          $company->delete();  
+          return redirect('/companies')->with('success','Company Deleted');
+        }
     }
 }
