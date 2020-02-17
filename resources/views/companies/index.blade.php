@@ -4,7 +4,7 @@
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
-            <div class="card-header">Companies
+            <div class="card-header">All Companies
                 <span class="float-right"><a href="/companies/create" class="btn btn-success btn-sm">Add Company</a></span>
             </div>
             <div class="card-body">
