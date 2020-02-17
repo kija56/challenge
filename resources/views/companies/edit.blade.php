@@ -56,7 +56,7 @@
                         @enderror
                     </div>
                     <div class="row pt-3">
-                        <button class="btn btn-primary">Save</button>
+                        <button class="btn btn-primary">Update</button>
                     </div>
                 </form> 
                 </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\User;
+use App\Notifications\NewCompany;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CompanyRequest;
@@ -67,7 +69,8 @@ class CompanyController extends Controller
         $company->website = $request->input('website');
         $company->logo = $filenameToStore;
         $company->save();
-
+        $user = User::first();
+        $user->notify(new NewCompany($company));
         return redirect('/companies')->with('success','A Company has been craeted succesfully');
         
     }

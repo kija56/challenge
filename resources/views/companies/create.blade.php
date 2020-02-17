@@ -4,7 +4,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Create Company
-                     <a class="float-right btn btn-primary btn-sm" href="/dashboard">Go Back</a>
+                     <a class="float-right btn btn-primary btn-sm" href="/companies">Go Back</a>
                 </div>
                 <div class="card-body">
                 <form action="/companies" enctype="multipart/form-data" method="post">
