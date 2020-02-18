@@ -1,65 +1,71 @@
-@extends('layouts.app')
+@extends('adminlte.index')
 @section('content')
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Create Company
-                     <a class="float-right btn btn-primary btn-sm" href="/companies">Go Back</a>
+<section class="content">
+    <div class="row">
+        <div class="col-9 pl-5 content-justify-center">
+            <div class="card card-info">
+                <div class="card-header">
+                    <h3 class="card-title">New Company</h3>
                 </div>
-                <div class="card-body">
-                <form action="/companies" enctype="multipart/form-data" method="post">
-                @csrf
-                    <div class="form-group row">
-                        <label for="name" class="col-md-4 col-form-label">{{ __('Company Name') }}</label>
-                        <input id="name" type="text" 
-                        class="form-control col-md-8 @error('name') is-invalid @enderror" name="name" 
-                        value="{{ old('name') }}" required>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form class="form-horizontal" action="/companies" enctype="multipart/form-data" method="post">
+                    @csrf
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-4 col-form-label">{{ __('Company Name') }}</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required id="name" placeholder="Company Name">
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-4 col-form-label">{{__('Company Email')}}</label>
+                            <div class="col-sm-8">
+                                <input id="email" type="email" class="form-control  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required placeholder="info@company.co.tz">
 
-                        @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="form-group row">
-                        <label for="email" class="col-md-4 col-form-label">{{ __('Company Email') }}</label>
-                        <input id="email" type="email" 
-                        class="form-control col-md-8 @error('email') is-invalid @enderror" name="email" 
-                        value="{{ old('email') }}" required>
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="website" class="col-sm-4 col-form-label">{{__('Company Website')}}</label>
+                            <div class="col-sm-8">
+                                <input id="website" type="text" class="form-control  @error('website') is-invalid @enderror" name="website" value="{{ old('website') }}" placeholder="https://www.company.co.tz">
 
-                        @error('email')
+                                @error('website')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="logo" class="col-md-4 col-form-label">{{ __('Company Logo') }}</label>
+                            <input type="file" class="form-control-file col-md-8" id="logo" name="logo">
+                            @error('logo')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                        @enderror
+                            @enderror
+                        </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="website" class="col-md-4 col-form-label">{{ __('Company Website') }}</label>
-                        <input id="website" type="text" 
-                        class="form-control col-md-8 @error('website') is-invalid @enderror" name="website" 
-                        value="{{ old('website') }}" >
-
-                        @error('website')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-info">Sign in</button>
+                        <button type="submit" class="btn btn-default float-right">Cancel</button>
                     </div>
-                    <div class="form-group row">
-                    <label for="logo" class="col-md-4 col-form-label">{{ __('Company Logo') }}</label>
-                        <input type="file" class="form-control-file col-md-8" id="logo" name="logo">
-                        @error('logo')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="row pt-3">
-                        <button class="btn btn-primary">Save</button>
-                    </div>
-                </form> 
-                </div>
+                    <!-- /.card-footer -->
+                </form>
             </div>
-        </div>
-    </div>
+            <!-- /.card -->
+</section>
+<!-- /.content -->
 @endsection
