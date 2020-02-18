@@ -68,8 +68,8 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-info">Submit</button>
-                        <button type="submit" class="btn btn-default float-right">Cancel</button>
+                        <button type="submit" class="btn btn-info btn-sm">Submit</button>
+                        <a href="/employees" class="btn btn-danger float-right btn-sm">Go Back</a>
                     </div>
                     <!-- /.card-footer -->
                 </form>
