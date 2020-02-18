@@ -14,13 +14,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{ asset('/bower_components/admin-lte/plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Theme style -->
-  
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset('/bower_components/plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
+  <link rel="stylesheet" href="{{ asset('/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
         <!-- Ionicons -->
-        <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-        <!-- Theme style -->
-        <link href="{{ asset('/bower_components/admin-lte/dist/css/AdminLTE.min.css')}}" rel="stylesheet" type="text/css" />
-  <link href="{{ asset('/bower_components/admin-lte/dist/css/skins/skin-blue.min.css')}}" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="{{ asset('/bower_components/admin-lte/dist/css/adminlte.min.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -74,12 +71,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="{{ asset('/bower_components/admin-lte/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{ asset('/bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('/bower_components/admin-lteplugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- DataTables -->
+<script src="{{ asset('/bower_components/plugins/datatables/jquery.dataTables.js')}}"></script>
+<script src="{{ asset('/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+<script src="{{ asset('/bower_components/plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="{{ asset('/bower_components/admin-ltedist/js/adminlte.min.js')}}"></script>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<script src="{{ asset('/bower_components/dist/js/adminlte.min.js')}}"></script>
+
+<script>
+  $(function () {
+    $("#companies").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+    });
+  });
+</script>
 </body>
 </html>
