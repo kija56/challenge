@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('adminlte.index');
+    return view('auth.login');
 });
 
 Auth::routes(['register' => false]);
