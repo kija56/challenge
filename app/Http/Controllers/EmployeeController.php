@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\Employee;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        $compnies= Company::all();
+        return view('employee.create')->with('companies',$compnies);
     }
 
     /**
