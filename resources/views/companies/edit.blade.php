@@ -5,7 +5,7 @@
         <div class="col-9 pl-5 content-justify-center">
             <div class="card card-info">
                 <div class="card-header">
-                    <h3 class="card-title">New Company</h3>
+                    <h3 class="card-title">Edit Company</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
