@@ -36,7 +36,11 @@
                                 <td class="d-flex">
                                     <div ><a class="btn btn-info btn-sm" href="/employees/{{$employee->id}}"><i class="fa fa-eye"></i> </a></div>
                                     <div class="pr-2 pl-2"><a class= "btn btn-primary btn-sm" href="/employees/{{$employee->id}}/edit"><i class="fa fa-edit"></i></a></div>
-                                    <a class= "btn btn-danger btn-sm" href="/employees/{{$employee->id}}/edit"><i class="fa fa-trash"></i></a>
+                                    <form action="/employees/{{$employee->id}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                        <button type="submit" class= "btn btn-danger btn-sm" ><i class="fa fa-trash"></i></button>
+                                    </form>
                                  </td>
                             </tr>
                             @endforeach
