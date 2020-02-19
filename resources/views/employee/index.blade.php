@@ -20,6 +20,7 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
+                                <th>Company</th>
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Actions</th>
@@ -29,24 +30,28 @@
                             @foreach($employees as $employee)
                             <tr>
                                 <td>{{$employee->firstName }} {{$employee->lastName}}</td>
-                                <td>{{$employee->email}}
-                                </td>
+                                <td>{{$employee->company->name}}</td>
+                                <td>{{$employee->email}}</td>
                                 <td>{{$employee->phone}}</td>
-                                <td></td>
-
+                                <td class="d-flex">
+                                    <div ><a class="btn btn-info btn-sm" href="/employees/{{$employee->id}}"><i class="fa fa-eye"></i> </a></div>
+                                    <div class="pr-2 pl-2"><a class= "btn btn-primary btn-sm" href="/employees/{{$employee->id}}/edit"><i class="fa fa-edit"></i></a></div>
+                                    <a class= "btn btn-danger btn-sm" href="/employees/{{$employee->id}}/edit"><i class="fa fa-trash"></i></a>
+                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th>Name</th>
+                                <th>Company</th>
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Actions</th>
                             </tr>
                         </tfoot>
                     </table>
-
+                    {!! $employees->links() !!}
                     @else
                     <p>No any Employee added yet</p>
                     @endif
