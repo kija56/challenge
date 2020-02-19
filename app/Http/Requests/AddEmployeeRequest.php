@@ -26,7 +26,7 @@ class AddEmployeeRequest extends FormRequest
         return [
             'firstName'=>'required',
             'lastName'=>'required',
-            'company'=>'',
+            'company_id'=>'',
             'email'=>'email',
             'phone'=>''
         ];

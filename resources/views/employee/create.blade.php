@@ -59,9 +59,9 @@
                         </div>
                         <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Company</label>
-                        <select class="form-control col-sm-8" name="company">
+                        <select class="form-control col-sm-8" name="company_id">
                             @foreach($companies as $company)
-                          <option name="company" value="{{$company->id}}">{{$company->name}}</option>
+                          <option name="company_id" value="{{$company->id}}">{{$company->name}}</option>
                           @endforeach
                         </select>
                       </div>

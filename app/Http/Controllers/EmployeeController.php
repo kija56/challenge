@@ -45,7 +45,7 @@ class EmployeeController extends Controller
         $employee->lastName = $request->input('lastName');
         $employee->email = $request->input('email');
         $employee->phone = $request->input('phone');
-        $employee->company = $request->input('company');
+        $employee->company_id = $request->input('company_id');
         $employee->save();
        return redirect('/employees')->with('success','A Company has been craeted succesfully');
     }
