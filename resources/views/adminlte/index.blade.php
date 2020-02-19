@@ -14,13 +14,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{ asset('/bower_components/admin-lte/plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset('/bower_components/admin-lte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="{{ asset('/bower_components/admin-lte/plugins/toastr/toastr.min.css')}}">
   <!-- DataTables -->
-  <link rel="stylesheet" href="{{ asset('/bower_components/plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
-  <link rel="stylesheet" href="{{ asset('/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('/bower_components/admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
         <!-- Ionicons -->
   <link rel="stylesheet" href="{{ asset('/bower_components/admin-lte/dist/css/adminlte.min.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -63,6 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Main content -->
         <section class="content">
             <!-- Your Page Content Here -->
+            @include('includes.messages')
             @yield('content')
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
@@ -71,15 +75,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="{{ asset('/bower_components/jquery/dist/jquery.min.js')}}"></script>
+<script src="{{ asset('/bower_components/admin-lte/plugins/jquery/jquery.min.js')}}"></script>
+<!-- SweetAlert2 -->
+<script src="{{ asset('/bower_components/admin-lte/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+<!-- Toastr -->
+<script src="{{ asset('/bower_components/admin-lte/plugins/toastr/toastr.min.js')}}"></script>
 <!-- Bootstrap 4 -->
-<script src="{{ asset('/bower_components/admin-lteplugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ asset('/bower_components/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- DataTables -->
-<script src="{{ asset('/bower_components/plugins/datatables/jquery.dataTables.js')}}"></script>
-<script src="{{ asset('/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
-<script src="{{ asset('/bower_components/plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
+<script src="{{ asset('/bower_components/admin-lte/plugins/datatables/jquery.dataTables.js')}}"></script>
+<script src="{{ asset('/bower_components/admin-lte/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+<script src="{{ asset('/bower_components/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="{{ asset('/bower_components/dist/js/adminlte.min.js')}}"></script>
+<script src="{{ asset('/bower_components/admin-lte/dist/js/adminlte.min.js')}}"></script>
 
 <script>
   $(function () {
