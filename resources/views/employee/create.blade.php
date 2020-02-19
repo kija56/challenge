@@ -3,6 +3,13 @@
 <section class="content">
     <div class="row">
         <div class="col-9 pl-5 content-justify-center">
+        <div class="row">
+                <div class="col-sm-12">
+                    @if (Session::has('error'))
+                        <p class="alert alert-danger">{{ Session::get('error') }}</p>
+                    @endif
+                </div>
+            </div>
             <div class="card card-info">
                 <div class="card-header">
                     <h3 class="card-title">New Employee</h3>
