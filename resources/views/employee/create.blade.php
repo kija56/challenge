@@ -9,7 +9,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form class="form-horizontal" action="/employees"  method="post">
+                <form class="form-horizontal" action="/employees" method="post">
                     @csrf
                     <div class="card-body">
                         <div class="form-group row">
@@ -49,7 +49,7 @@
                         <div class="form-group row">
                             <label for="phone" class="col-sm-4 col-form-label">{{__('Phone Number')}}</label>
                             <div class="col-sm-8">
-                                <input id="phone" type="text" class="form-control  @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" >
+                                <input id="phone" type="text" class="form-control  @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}">
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -58,13 +58,13 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">Company</label>
-                        <select class="form-control col-sm-8" name="company_id">
-                            @foreach($companies as $company)
-                          <option name="company_id" value="{{$company->id}}">{{$company->name}}</option>
-                          @endforeach
-                        </select>
-                      </div>
+                            <label class="col-sm-4 col-form-label">Company</label>
+                            <select class="form-control col-sm-8" name="company_id">
+                                @foreach($companies as $company)
+                                <option name="company_id" value="{{$company->id}}">{{$company->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
@@ -75,6 +75,17 @@
                 </form>
             </div>
             <!-- /.card -->
+        </div>
+
+        <div class="col-3 float-right">
+            <form action="{{ url('employee/import') }}" method="POST" name="importform" enctype="multipart/form-data">
+                @csrf
+                <label for="file">Import a csv file</label>
+                <input type="file" name="file" class="form-control"><br>
+                <button class="btn btn-success btn-sm">Import File</button>
+            </form>
+        </div>
+    </div>
 </section>
 <!-- /.content -->
 @endsection

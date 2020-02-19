@@ -10,9 +10,10 @@
         <div class="col-12">
             <div class="box">
                 <div class="box-header pb-4 ">
-                    <a class="btn btn-primary btn-sm float-right" href="/employees/create">New Employee</a>
+                    <a class="btn btn-primary btn-sm " href="/employees/create">New Employee</a>
+                    
                 </div>
-                <!-- /.box-header --> 
+                <!-- /.box-header -->
                 <div class="box-body pt-3">
                     @if(count($employees)>0)
                     <table id="companies" class="table table-bordered table-striped">
@@ -32,7 +33,7 @@
                                 </td>
                                 <td>{{$employee->phone}}</td>
                                 <td></td>
-                                
+
                             </tr>
                             @endforeach
                         </tbody>
@@ -45,7 +46,7 @@
                             </tr>
                         </tfoot>
                     </table>
-                    
+
                     @else
                     <p>No any Employee added yet</p>
                     @endif
