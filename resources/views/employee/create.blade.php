@@ -9,14 +9,14 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form class="form-horizontal" action="/employees" enctype="multipart/form-data" method="post">
+                <form class="form-horizontal" action="/employees"  method="post">
                     @csrf
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="firstName" class="col-sm-4 col-form-label">{{ __('First Name') }}</label>
                             <div class="col-sm-8">
                                 <input type="text" class="form-control @error('firtsName') is-invalid @enderror" name="firstName" value="{{ old('firstName') }}" required id="firstName" placeholder="First Name">
-                                @error('name')
+                                @error('firstName')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Company</label>
-                        <select class="form-control col-sm-8">
+                        <select class="form-control col-sm-8" name="company">
                             @foreach($companies as $company)
                           <option name="company" value="{{$company->id}}">{{$company->name}}</option>
                           @endforeach

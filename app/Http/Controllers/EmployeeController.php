@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\Employee;
+use App\Http\Requests\AddEmployeeRequest;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -36,9 +37,17 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddEmployeeRequest $request)
     {
-        //
+        
+        $employee = new Employee();
+        $employee->firstName = $request->input('firstName');
+        $employee->lastName = $request->input('lastName');
+        $employee->email = $request->input('email');
+        $employee->phone = $request->input('phone');
+        $employee->company = $request->input('company');
+        $employee->save();
+       return redirect('/employees')->with('success','A Company has been craeted succesfully');
     }
 
     /**

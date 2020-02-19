@@ -9,12 +9,11 @@
     <div class="row">
         <div class="col-12">
             <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">Employees</h3>
-                    <a class="btn btn-primary btn-sm" href="/employees/create">Add Employee</a>
+                <div class="box-header pb-4 ">
+                    <a class="btn btn-primary btn-sm float-right" href="/employees/create">New Employee</a>
                 </div>
                 <!-- /.box-header --> 
-                <div class="box-body">
+                <div class="box-body pt-3">
                     @if(count($employees)>0)
                     <table id="companies" class="table table-bordered table-striped">
                         <thead>
@@ -22,18 +21,16 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
-                                <th>Company</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($employees as $employee)
                             <tr>
-                                <td>{{$employee->firstName }}</td>
+                                <td>{{$employee->firstName }} {{$employee->lastName}}</td>
                                 <td>{{$employee->email}}
                                 </td>
                                 <td>{{$employee->phone}}</td>
-                                <td>{{$employee->company->name}}</td>
                                 <td></td>
                                 
                             </tr>
@@ -44,7 +41,6 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
-                                <th>Company</th>
                                 <th>Actions</th>
                             </tr>
                         </tfoot>

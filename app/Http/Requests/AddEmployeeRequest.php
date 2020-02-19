@@ -13,7 +13,7 @@ class AddEmployeeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,7 @@ class AddEmployeeRequest extends FormRequest
         return [
             'firstName'=>'required',
             'lastName'=>'required',
-            'company'=>'required',
+            'company'=>'',
             'email'=>'email',
             'phone'=>''
         ];
