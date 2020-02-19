@@ -78,7 +78,7 @@
         </div>
 
         <div class="col-3 float-right">
-            <form action="{{ url('import') }}" method="POST" name="importform" enctype="multipart/form-data">
+            <form action="{{ url('employees/import') }}" method="POST" name="importform" enctype="multipart/form-data">
                 @csrf
                 <label for="file">Import a csv file</label>
                 <input type="file" name="file" class="form-control"><br>
