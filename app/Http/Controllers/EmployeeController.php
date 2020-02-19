@@ -49,7 +49,7 @@ class EmployeeController extends Controller
         $employee->phone = $request->input('phone');
         $employee->company_id = $request->input('company_id');
         $employee->save();
-       return redirect('/employees')->with('success','A Company has been craeted succesfully');
+       return redirect('/employees')->with('success','Employee has been added succesfully');
     }
 
     public function import(Request $request) 
@@ -102,9 +102,16 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AddEmployeeRequest $request, $id)
     {
-        //
+        $employee = Employee::findOrfail($id);
+        $employee->firstName = $request->input('firstName');
+        $employee->lastName = $request->input('lastName');
+        $employee->email = $request->input('email');
+        $employee->phone = $request->input('phone');
+        $employee->company_id = $request->input('company_id');
+        $employee->update();
+       return redirect('/employees')->with('success','Employee details updated');
     }
 
     /**

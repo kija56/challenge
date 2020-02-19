@@ -65,6 +65,7 @@
                                 @enderror
                             </div>
                         </div>
+                        <input id="company_id" type="hidden" name="company_id" value="{{ $employee->company_id}}">
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
