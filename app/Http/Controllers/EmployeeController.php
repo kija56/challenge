@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\Employee;
 use App\Http\Requests\AddEmployeeRequest;
+use App\Imports\ImportEmployees;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EmployeeController extends Controller
 {
@@ -50,6 +52,15 @@ class EmployeeController extends Controller
        return redirect('/employees')->with('success','A Company has been craeted succesfully');
     }
 
+    public function import(Request $request) 
+    {
+        $request->validate([
+            'file' =>'required'
+        ]);
+        Excel::import(new ImportEmployees, request()->file('file'));
+           
+        return redirect('/employees');
+    }
     /**
      * Display the specified resource.
      *
