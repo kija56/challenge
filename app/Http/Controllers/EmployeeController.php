@@ -18,7 +18,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::all();
+        $employees = Employee::orderBy('created_at', 'desc')->paginate(10);
         return view('employee.index')->with('employees',$employees);
     }
 
@@ -57,8 +57,19 @@ class EmployeeController extends Controller
         $request->validate([
             'file' =>'required'
         ]);
-        Excel::import(new ImportEmployees, request()->file('file'));
-           
+        try{
+            Excel::import(new ImportEmployees, request()->file('file'));
+        }
+        catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $failures = $e->failures();
+            
+            foreach ($failures as $failure) {
+                $failure->row(); 
+                $failure->attribute(); 
+                $failure->errors(); 
+                $failure->values(); 
+            }
+        }  
         return redirect('/employees');
     }
     /**
