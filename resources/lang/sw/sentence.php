@@ -3,5 +3,8 @@
 // sentence.php
 
 return [
-  'welcome' => 'Karibu'
+  'welcome' => 'Karibu',
+  'companies'=>'Makampuni',
+  'employees'=>'Wafanyakazi',
+  'home'=>'Nyumbani'
 ];

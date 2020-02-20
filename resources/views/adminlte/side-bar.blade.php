@@ -33,13 +33,13 @@
             <li class="nav-item">
               <a href="/companies/create" class="nav-link active">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Company</p>
+                <p>{{ __('sentence.companies') }}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="/employees/create" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Employee</p>
+                <p>{{ __('sentence.employees') }}</p>
               </a>
             </li>
           </ul>

@@ -11,20 +11,20 @@
       <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="/home" class="nav-link">Home</a>
+      <a href="/home" class="nav-link">{{ __('sentence.home') }}</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a class="nav-link" href="/companies">{{ __('Companies') }}</a>
+      <a class="nav-link" href="/companies">{{ __('sentence.companies') }}</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a class="nav-link" href="/employees">{{ __('Employees') }}</a>
+      <a class="nav-link" href="/employees">{{ __('sentence.employees') }}</a>
     </li>
 
     @endguest
   </ul>
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
-  @php $locale = session()->get('locale'); @endphp
+    @php $locale = session()->get('locale'); @endphp
     <!-- Language Dropdown Menu -->
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
@@ -40,23 +40,23 @@
       @case('sw')
       <i class="flag-icon flag-icon-tz mr-2"></i> Tanzania
       @break
-      @default
+      @case('en')
       <i class="flag-icon flag-icon-us mr-2"> English
-      @endswitch
-      <div class="dropdown-menu dropdown-menu-right p-0">
-        <a href="lang/en" class="dropdown-item active">
-          <i class="flag-icon flag-icon-us mr-2"></i> English
-        </a>
-        <a href="lang/sw" class="dropdown-item">
-          <i class="flag-icon flag-icon-tz mr-2"></i> Swahili
-        </a>
-        <a href="lang/fr" class="dropdown-item">
-          <i class="flag-icon flag-icon-fr mr-2"></i> French
-        </a>
-        <a href="lang/es" class="dropdown-item">
-          <i class="flag-icon flag-icon-es mr-2"></i> Spanish
-        </a>
-      </div>
+        @endswitch
+        <div class="dropdown-menu dropdown-menu-right p-0">
+          <a href="lang/en" class="dropdown-item active">
+            <i class="flag-icon flag-icon-us mr-2"></i> English
+          </a>
+          <a href="lang/sw" class="dropdown-item">
+            <i class="flag-icon flag-icon-tz mr-2"></i> Swahili
+          </a>
+          <a href="lang/fr" class="dropdown-item">
+            <i class="flag-icon flag-icon-fr mr-2"></i> French
+          </a>
+          <a href="lang/es" class="dropdown-item">
+            <i class="flag-icon flag-icon-es mr-2"></i> Spanish
+          </a>
+        </div>
     </li>
     <li class="nav-item dropdown">
       <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -3,5 +3,8 @@
 // sentence.php
 
 return [
-  'welcome' => 'Bienvenido amigo'
+  'welcome' => 'Bienvenido amigo',
+  'companies'=>'Empresas',
+  'employees'=>'Empleadas',
+  'home'=>'Hogar'
 ];
