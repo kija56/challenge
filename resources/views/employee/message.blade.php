@@ -1,3 +1,5 @@
+@extends('adminlte.index')
+@section('content')
 <!-- Main content -->
 <section class="content">
     <div class="row">
@@ -8,31 +10,29 @@
                     <h3 class="box-title">Compose New Message</h3>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="form-group">
-                        <input class="form-control" placeholder="To:">
+                <form action="/employees/sendMail" method="post">
+                    @csrf
+                    <div class="box-body">
+                        <div class="form-group">
+                            <input class="form-control" placeholder="To:All Employees">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" name="subject" placeholder="Subject:" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="compose-textarea" name="message" class="form-control" style="height: 100px" required>
+                            </textarea>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input class="form-control" placeholder="Subject:">
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send</button>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <textarea id="compose-textarea" class="form-control" style="height: 300px">
-                      <h1><u>Heading Of Message</u></h1>
-                      <h4>Subheading</h4>
-                      <p></p>
-                      <p>Thank you,</p>
-                      <p>John Doe</p>
-                    </textarea>
-                    </div>
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer">
-                    <div class="pull-right">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send</button>
-                    </div>
-                    <button type="reset" class="btn btn-default"><i class="fa fa-times"></i> Discard</button>
-                </div>
-                <!-- /.box-footer -->
+                    <!-- /.box-footer -->
+                </form>
+
             </div>
             <!-- /. box -->
         </div>
@@ -41,3 +41,4 @@
     <!-- /.row -->
 </section>
 <!-- /.content -->
+@endsection
