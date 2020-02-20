@@ -33,6 +33,11 @@ class EmployeeController extends Controller
         return view('employee.create')->with('companies',$compnies);
     }
 
+    public function email()
+    {
+        return view('employee.message');
+    }
+
     /**
      * Store a newly created resource in storage.
      *

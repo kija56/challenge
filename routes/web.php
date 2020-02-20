@@ -22,5 +22,6 @@ Route::get('lang/{locale}', 'HomeController@lang');
 
 Route::resource('companies', 'CompanyController');
 Route::post('employees/import', 'EmployeeController@import')->name('import');
+Route::get('employees/email', 'EmployeeController@email')->name('email');
 Route::resource('employees', 'EmployeeController');
 
