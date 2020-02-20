@@ -6,6 +6,7 @@ use App\Company;
 use App\Employee;
 use App\Http\Requests\AddEmployeeRequest;
 use App\Imports\ImportEmployees;
+use App\Notifications\EmployeeNotification;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -19,7 +20,7 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::orderBy('created_at', 'desc')->paginate(10);
-        return view('employee.index')->with('employees',$employees);
+        return view('employee.index')->with('employees', $employees);
     }
 
     /**
@@ -29,8 +30,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        $compnies= Company::all();
-        return view('employee.create')->with('companies',$compnies);
+        $compnies = Company::all();
+        return view('employee.create')->with('companies', $compnies);
     }
 
     public function email()
@@ -38,6 +39,15 @@ class EmployeeController extends Controller
         return view('employee.message');
     }
 
+    public function sendMail(Request $request)
+    {
+
+        $employees = Employee::all();
+        foreach ($employees as $employee) {
+            $employee->notify(new EmployeeNotification());
+        }
+        return redirect('/home');
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -46,7 +56,7 @@ class EmployeeController extends Controller
      */
     public function store(AddEmployeeRequest $request)
     {
-        
+
         $employee = new Employee();
         $employee->firstName = $request->input('firstName');
         $employee->lastName = $request->input('lastName');
@@ -54,27 +64,26 @@ class EmployeeController extends Controller
         $employee->phone = $request->input('phone');
         $employee->company_id = $request->input('company_id');
         $employee->save();
-       return redirect('/employees')->with('success','Employee has been added succesfully');
+        return redirect('/employees')->with('success', 'Employee has been added succesfully');
     }
 
-    public function import(Request $request) 
+    public function import(Request $request)
     {
         $request->validate([
-            'file' =>'required'
+            'file' => 'required'
         ]);
-        try{
+        try {
             Excel::import(new ImportEmployees, request()->file('file'));
-        }
-        catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
             $failures = $e->failures();
-            
+
             foreach ($failures as $failure) {
-                $failure->row(); 
-                $failure->attribute(); 
-                $failure->errors(); 
-                $failure->values(); 
+                $failure->row();
+                $failure->attribute();
+                $failure->errors();
+                $failure->values();
             }
-        }  
+        }
         return redirect('/employees');
     }
     /**
@@ -98,7 +107,7 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         $employee = Employee::findOrfail($id);
-        return view('employee.edit')->with('employee',$employee);
+        return view('employee.edit')->with('employee', $employee);
     }
 
     /**
@@ -117,7 +126,7 @@ class EmployeeController extends Controller
         $employee->phone = $request->input('phone');
         $employee->company_id = $request->input('company_id');
         $employee->update();
-       return redirect('/employees')->with('success','Employee details updated');
+        return redirect('/employees')->with('success', 'Employee details updated');
     }
 
     /**
@@ -130,6 +139,6 @@ class EmployeeController extends Controller
     {
         $employee = Employee::findOrfail($id);
         $employee->delete();
-        return redirect('/employees')->with('success','Employee deleted successfully');
+        return redirect('/employees')->with('success', 'Employee deleted successfully');
     }
 }

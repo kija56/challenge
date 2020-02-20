@@ -40,10 +40,12 @@ class EmployeeNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        
-        return (new MailMessage)->view(
-            'employee.email'
-            );
+
+        return (new MailMessage)
+            ->greeting('Hello!')
+            ->line('Thank you for using our application')
+            ->action('Check it out', url('/'))
+            ->line('Best regards!');
     }
 
     /**
