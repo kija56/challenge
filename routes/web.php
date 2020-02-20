@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('lang/{locale}', 'HomeController@lang');
 
 Route::resource('companies', 'CompanyController');
 Route::post('employees/import', 'EmployeeController@import')->name('import');

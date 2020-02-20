@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller
 {
@@ -25,5 +26,12 @@ class HomeController extends Controller
     {
         $data = Company::all();
         return view('home')->with('data',$data);
+    }
+
+    public function lang($locale)
+    {
+        App::setLocale($locale);
+        session()->put('locale', $locale);
+        return redirect()->back();
     }
 }
