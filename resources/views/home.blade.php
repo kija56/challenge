@@ -2,6 +2,7 @@
 
 @section('content')
 <div class='row'>
+    <div class="col-lg-12"><p><i>{{ trans('sentence.welcome')}}</i> <b>{{ Auth::user()->name }}</b></p></div>
     <div class="col-lg-6">
         <div class="card card-primary card-outline">
             <div class="card-header">

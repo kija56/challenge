@@ -24,22 +24,36 @@
   </ul>
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
+  @php $locale = session()->get('locale'); @endphp
     <!-- Language Dropdown Menu -->
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
-        <i class="flag-icon flag-icon-us"></i>
+        Language
       </a>
+      @switch($locale)
+      @case('fr')
+      <i class="flag-icon flag-icon-fr mr-2"></i> French
+      @break
+      @case('es')
+      <i class="flag-icon flag-icon-es mr-2"></i> Spain
+      @break
+      @case('sw')
+      <i class="flag-icon flag-icon-tz mr-2"></i> Tanzania
+      @break
+      @default
+      <i class="flag-icon flag-icon-us mr-2"> English
+      @endswitch
       <div class="dropdown-menu dropdown-menu-right p-0">
-        <a href="#" class="dropdown-item active">
+        <a href="lang/en" class="dropdown-item active">
           <i class="flag-icon flag-icon-us mr-2"></i> English
         </a>
-        <a href="#" class="dropdown-item">
-          <i class="flag-icon flag-icon-de mr-2"></i> German
+        <a href="lang/sw" class="dropdown-item">
+          <i class="flag-icon flag-icon-tz mr-2"></i> Swahili
         </a>
-        <a href="#" class="dropdown-item">
+        <a href="lang/fr" class="dropdown-item">
           <i class="flag-icon flag-icon-fr mr-2"></i> French
         </a>
-        <a href="#" class="dropdown-item">
+        <a href="lang/es" class="dropdown-item">
           <i class="flag-icon flag-icon-es mr-2"></i> Spanish
         </a>
       </div>
