@@ -99,15 +99,16 @@ class EmployeeController extends Controller
             Excel::import(new ImportEmployees, request()->file('file'));
         } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
             $failures = $e->failures();
-
             foreach ($failures as $failure) {
                 $failure->row();
                 $failure->attribute();
                 $failure->errors();
                 $failure->values();
             }
+           return back()->withErrors($failures);
         }
-        return redirect('/employees');
+        return redirect('/employees')->with('success','Employees added successfully');
+        
     }
     /**
      * Display the specified resource.
