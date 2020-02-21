@@ -7,10 +7,12 @@ use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\SkipsErrors;
+use Maatwebsite\Excel\Concerns\SkipsOnError;
 
-class ImportEmployees implements ToModel,WithValidation, WithHeadingRow
+class ImportEmployees implements ToModel,WithValidation, WithHeadingRow, SkipsOnError
 {
-    use Importable;
+    use Importable,SkipsErrors;
     /**
     * @param array $row
     *
