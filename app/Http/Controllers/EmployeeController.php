@@ -6,12 +6,20 @@ use App\Company;
 use App\Employee;
 use App\Http\Requests\AddEmployeeRequest;
 use App\Imports\ImportEmployees;
+use App\Mail\SendToEmployees;
 use App\Notifications\EmployeeNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 
 class EmployeeController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -36,16 +44,31 @@ class EmployeeController extends Controller
 
     public function email()
     {
-        return view('employee.message');
+        $employees = Employee::all();
+        return view('employee.message')->with('employees', $employees);
     }
 
     public function sendMail(Request $request)
     {
 
+        $user = Auth::user();
         $employees = Employee::all();
+        $message = new \stdClass();
         foreach ($employees as $employee) {
-            $employee->notify(new EmployeeNotification());
+            $message->senderEmail = $user->email;
+            $message->senderName = $user->name;
+            $message->message = $request->message;
+            $message->subject = $request->subject;
+            $message->email = $employee->email;
+            Mail::queue(new SendToEmployees($message));
         }
+
+
+
+        // $employees = Employee::all();
+        // foreach ($employees as $employee) {
+        //     $employee->notify(new EmployeeNotification());
+        // }
         return redirect('/home');
     }
     /**

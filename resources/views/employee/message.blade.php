@@ -14,7 +14,7 @@
                     @csrf
                     <div class="box-body">
                         <div class="form-group">
-                            <input class="form-control" placeholder="To:All Employees">
+                            <input class="form-control " disabled placeholder="To:All Employees">
                         </div>
                         <div class="form-group">
                             <input class="form-control" name="subject" placeholder="Subject:" required>
@@ -27,7 +27,7 @@
                     <!-- /.box-body -->
                     <div class="box-footer">
                         <div class="pull-right">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send</button>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-envelope"></i> Send</button>
                         </div>
                     </div>
                     <!-- /.box-footer -->
