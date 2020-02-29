@@ -12,5 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
+Auth::routes(['register' => false]);
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('lang/{locale}', 'HomeController@lang');
+
+Route::resource('companies', 'CompanyController');
+Route::post('employees/import', 'EmployeeController@import')->name('import');
+Route::get('employees/email', 'EmployeeController@email')->name('email');
+Route::post('employees/sendMail', 'EmployeeController@sendMail');
+Route::resource('employees', 'EmployeeController');
+
