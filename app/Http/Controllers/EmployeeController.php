@@ -38,14 +38,14 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        $compnies = Company::all();
-        return view('employee.create')->with('companies', $compnies);
+        $companies = Company::all();
+        return view('employee.create',compact('companies',$companies));
     }
 
     public function email()
     {
         $employees = Employee::all();
-        return view('employee.message')->with('employees', $employees);
+        return view('employee.message',compact('employees', $employees));
     }
 
     public function sendMail(Request $request)
@@ -80,13 +80,7 @@ class EmployeeController extends Controller
     public function store(AddEmployeeRequest $request)
     {
 
-        $employee = new Employee();
-        $employee->firstName = $request->input('firstName');
-        $employee->lastName = $request->input('lastName');
-        $employee->email = $request->input('email');
-        $employee->phone = $request->input('phone');
-        $employee->company_id = $request->input('company_id');
-        $employee->save();
+        $employee = Employee::create($request->all());
         return redirect('/employees')->with('success', 'Employee has been added succesfully');
     }
 
@@ -119,7 +113,7 @@ class EmployeeController extends Controller
     public function show($id)
     {
         $employee = Employee::findOrfail($id);
-        return view('employee.show')->with('employee', $employee);
+        return view('employee.show',compact('employee',$employee));
     }
 
     /**
@@ -131,7 +125,7 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         $employee = Employee::findOrfail($id);
-        return view('employee.edit')->with('employee', $employee);
+        return view('employee.edit',compact('employee', $employee));
     }
 
     /**
